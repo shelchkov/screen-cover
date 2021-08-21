@@ -1,5 +1,6 @@
 {
   "name": "screen-cover",
+  "version": "0.1.1",
   "description": "Animation component for navigating between pages",
   "keywords": [
     "react",
@@ -16,7 +17,6 @@
     "url": "git+https://github.com/shelchkov/screen-cover.git"
   },
   "author": "shelchkov",
-  "version": "0.1.0",
   "private": false,
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
