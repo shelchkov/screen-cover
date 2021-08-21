@@ -15,6 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/shelchkov/screen-cover.git"
   },
+  "author": "shelchkov",
   "version": "0.1.0",
   "private": false,
   "dependencies": {
