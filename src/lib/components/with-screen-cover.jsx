@@ -1,3 +1,4 @@
+import React from "react"
 import { useScreenCover } from "./screen-cover-context"
 
 export const withScreenCover = (Component) => {
