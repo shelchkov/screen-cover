@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { ScreenCover } from './screen-cover'
 import { ScreenCoverContext, ScreenCoverStage } from './screen-cover-context'
-import { DEFAULT_COVER_END, DEFAULT_COVER_TIME } from './utils'
+import { defaultConfig } from './utils'
 
 // interface Props {
 //   children: ReactElement | ReactElement[]
 // }
 
-export const ScreenCoverProvider = ({ children }) => {
+export const ScreenCoverProvider = ({ children, config = {} }) => {
   const [stage, setStage] = useState(ScreenCoverStage.INIT)
+
+  const fullConfig = { ...defaultConfig, ...config,  }
 
   const showCover = (onCover, onEnd) => {
     setStage(ScreenCoverStage.START)
@@ -17,12 +19,12 @@ export const ScreenCoverProvider = ({ children }) => {
     setTimeout(() => {
       setStage(ScreenCoverStage.UNCOVER)
       onCover && onCover()
-    }, DEFAULT_COVER_TIME)
+    }, fullConfig.coverTime)
 
     setTimeout(() => {
       setStage(ScreenCoverStage.INIT)
       onEnd && onEnd()
-    }, DEFAULT_COVER_END)
+    }, fullConfig.uncoverTime)
   }
 
   const shouldShowCover = stage !== ScreenCoverStage.INIT
@@ -34,7 +36,7 @@ export const ScreenCoverProvider = ({ children }) => {
       {children}
 
       {shouldShowCover &&
-        <ScreenCover stage={stage} />
+        <ScreenCover stage={stage} {...fullConfig}  />
       }
     </ScreenCoverContext.Provider>
   )
