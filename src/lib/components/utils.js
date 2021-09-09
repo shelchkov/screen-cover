@@ -1,4 +1,12 @@
 export const noop = () => undefined
 
-export const DEFAULT_COVER_TIME = 1100
-export const DEFAULT_COVER_END = 2000
+const DEFAULT_COVER_TIME = 1100
+const DEFAULT_COVER_END = 2000
+
+export const defaultConfig = {
+  coverTime: DEFAULT_COVER_TIME,
+  uncoverTime: DEFAULT_COVER_END
+}
+
+export const TOP_TRANSITION_COEFFICIENT = 1375
+export const BOTTOM_TRANSITION_COEFFICIENT = 1800
