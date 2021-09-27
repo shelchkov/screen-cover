@@ -1,5 +1,5 @@
 import React from 'react'
-import "./styles/cover.css"
+import "../styles/cover.css"
 
 interface Props {
   top: number
