@@ -1,18 +1,19 @@
-import React, { useState } from 'react'
+import React, { ReactElement, useState } from 'react'
 import { ScreenCover } from './screen-cover'
 import { ScreenCoverContext, ScreenCoverStage } from './screen-cover-context'
-import { defaultConfig } from './utils'
+import { CoverConfig, defaultConfig } from './utils'
 
-// interface Props {
-//   children: ReactElement | ReactElement[]
-// }
+interface Props {
+  children: ReactElement | ReactElement[]
+  config?: Partial<CoverConfig>
+}
 
-export const ScreenCoverProvider = ({ children, config = {} }) => {
+export const ScreenCoverProvider = ({ children, config = {} }: Props) => {
   const [stage, setStage] = useState(ScreenCoverStage.INIT)
 
   const fullConfig = { ...defaultConfig, ...config,  }
 
-  const showCover = (onCover, onEnd) => {
+  const showCover = (onCover?: () => void, onEnd?: () => void) => {
     setStage(ScreenCoverStage.START)
     setTimeout(() => setStage(ScreenCoverStage.GO_UP))
 

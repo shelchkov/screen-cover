@@ -1,13 +1,15 @@
 import React from 'react'
 import "./styles/cover.css"
 
-// interface Props {
-//   top: number
-//   bottom: number
-//   backgroundColor?: string
-// }
+interface Props {
+  top: number
+  bottom: number
+  backgroundColor?: string
+  topTransition?: number
+  bottomTransition?: number
+}
 
-export const Cover = ({ top, bottom, backgroundColor, topTransition = .8, bottomTransition = .5 }) => (
+export const Cover = ({ top, bottom, backgroundColor, topTransition = .8, bottomTransition = .5 }: Props) => (
   <div
     style={{
       top: `${top}px`,

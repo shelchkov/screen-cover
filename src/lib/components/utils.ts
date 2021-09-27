@@ -1,9 +1,15 @@
+export interface CoverConfig {
+  coverTime: number
+  uncoverTime: number
+  backgroundColor?: string
+}
+
 export const noop = () => undefined
 
 const DEFAULT_COVER_TIME = 1100
 const DEFAULT_COVER_END = 2000
 
-export const defaultConfig = {
+export const defaultConfig: CoverConfig = {
   coverTime: DEFAULT_COVER_TIME,
   uncoverTime: DEFAULT_COVER_END
 }

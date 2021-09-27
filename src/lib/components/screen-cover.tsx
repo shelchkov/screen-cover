@@ -1,13 +1,13 @@
 import React from 'react'
 import { Cover } from './cover'
 import { ScreenCoverStage } from './screen-cover-context'
-import { BOTTOM_TRANSITION_COEFFICIENT, TOP_TRANSITION_COEFFICIENT } from './utils'
+import { BOTTOM_TRANSITION_COEFFICIENT, CoverConfig, TOP_TRANSITION_COEFFICIENT } from './utils'
 
-// interface Props {
-//   stage: ScreenCoverStage
-// }
+type Props = {
+  stage: ScreenCoverStage
+} & CoverConfig
 
-const getTopAndBottom = (stage, screenHeight) => {
+const getTopAndBottom = (stage: ScreenCoverStage, screenHeight: number) => {
   switch (stage) {
     case ScreenCoverStage.INIT:
       return [screenHeight, 0]
@@ -23,14 +23,14 @@ const getTopAndBottom = (stage, screenHeight) => {
   }
 }
 
-const getTransitionConfig = (coverTime, uncoverTime) => {
+const getTransitionConfig = (coverTime: number, uncoverTime: number) => {
   const topTransition = coverTime / TOP_TRANSITION_COEFFICIENT
   const bottomTransition = (uncoverTime - coverTime) / BOTTOM_TRANSITION_COEFFICIENT
 
   return { topTransition, bottomTransition }
 }
 
-export const ScreenCover = ({ stage, backgroundColor, coverTime, uncoverTime }) => {
+export const ScreenCover = ({ stage, backgroundColor, coverTime, uncoverTime }: Props) => {
   const height = window.innerHeight
 
   const [top, bottom] = getTopAndBottom(stage, height)
