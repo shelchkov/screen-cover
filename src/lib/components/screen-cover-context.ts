@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { noop } from "./utils";
+import { CoverConfig, noop } from "./utils";
 
 export enum ScreenCoverStage {
   INIT = "INIT",
@@ -9,7 +9,7 @@ export enum ScreenCoverStage {
 }
 
 export interface ScreenCoverContextI {
-  showCover: (onCover?: () => void, onEnd?: () => void) => void
+  showCover: (onCover?: () => void, onEnd?: () => void, config?: Partial<CoverConfig>) => void
 }
 
 const defaultValue: ScreenCoverContextI = {
