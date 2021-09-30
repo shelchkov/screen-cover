@@ -32,7 +32,8 @@
     "prepackage:build": "rm -rf dist",
     "copy-css": "mkdir dist && mkdir dist/styles && cp -r ./src/lib/styles/ ./dist/styles/",
     "compile:ts": "tsc --project tsconfig.build.json",
-    "lint": "npx eslint src/lib/**/*.{tsx,ts}"
+    "lint": "npx eslint src/lib/**/*.{tsx,ts}",
+    "typecheck": "tsc"
   },
   "browserslist": {
     "production": [
