@@ -21,7 +21,7 @@ init:
   - nvm use 14
   - node -v
 install:
-  - npm run install
+  - npm install
 
 for:
   -
