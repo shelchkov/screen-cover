@@ -37,10 +37,8 @@ for:
       - echo branch ${APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH}
       - echo build branch ${APPVEYOR_REPO_BRANCH}
       - git config user.email "${GIT_EMAIL}" && git config user.name "${GIT_NAME}"
-      - git remote set-url origin https://shelchkov:${GITHUB_ACCESS_TOKEN}@github.com/shelchkov/screen-cover.git
       - 'git add -A && git commit -m"feat: fix linting"'
-      - git status
-      - git push origin HEAD:${APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH}
+      - git push https://${GITHUB_ACCESS_TOKEN}@github.com/shelchkov/screen-cover.git HEAD:${APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH}
       - git status
     build: off
 
