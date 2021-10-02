@@ -17,6 +17,7 @@ environment:
       job_depends_on: Checks
 
 image: Ubuntu2004
+skip_branch_with_pr: true
 init:
   - nvm use 14
   - node -v
@@ -35,16 +36,12 @@ for:
       - git status
       - echo branch ${APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH}
       - echo build branch ${APPVEYOR_REPO_BRANCH}
-      - echo home ${HOME}
       - git config user.email "${GIT_EMAIL}" && git config user.name "${GIT_NAME}"
-      - git config credential.helper store
-      - git config -l
-      - ps: Set-Content -Path "$HOME\.git-credentials" -Value "https://$($env:GITHUB_ACCESS_TOKEN):x-oauth-basic@github.com`n" -NoNewline
+      - git remote set-url origin https://shelchkov:${GITHUB_ACCESS_TOKEN}@github.com/shelchkov/screen-cover.git
       - 'git add -A && git commit -m"feat: fix linting"'
       - git status
       - git push origin HEAD:${APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH}
       - git status
-      - echo user profile ${userprofile}
     build: off
 
   -
