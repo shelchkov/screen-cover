@@ -18,10 +18,8 @@ environment:
 
 image: Ubuntu2004
 init:
-  - node -v
   - nvm use 14
   - node -v
-  - git config --global user.email "${GIT_EMAIL}" && git config user.name "${GIT_NAME}"
 install:
   - npm run install
 
@@ -34,11 +32,13 @@ for:
       - npm run typecheck
       - npm run lint:fix
     after_test:
-      - git status && git config -l
+      - git status
       - echo branch ${APPVEYOR_PULL_REQUEST_HEAD_REPO_BRANCH}
       - echo build branch ${APPVEYOR_REPO_BRANCH}
       - echo home ${HOME}
+      - git config user.email "${GIT_EMAIL}" && git config user.name "${GIT_NAME}"
       - git config credential.helper store
+      - git config -l
       - ps: Set-Content -Path "$HOME\.git-credentials" -Value "https://$($env:GITHUB_ACCESS_TOKEN):x-oauth-basic@github.com`n" -NoNewline
       - 'git add -A && git commit -m"feat: fix linting"'
       - git status
@@ -71,6 +71,6 @@ for:
       - curl https://cli-assets.heroku.com/install.sh | sh
       - heroku -v
     deploy_script:
-      - cd build && git init && git config -l
+      - cd build && git init && git config user.email "${GIT_EMAIL}" && git config user.name "${GIT_NAME}" && git config -l
       - git add -A && git commit -m'deploy ${APPVEYOR_REPO_TAG_NAME}'
       - git push -f https://heroku:$${HEROKU_API_KEY}@git.heroku.com/${HEROKU_APP_NAME}.git HEAD:main
