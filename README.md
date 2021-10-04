@@ -1,5 +1,8 @@
 # Screen-Cover
 
+![npm](https://img.shields.io/npm/v/screen-cover)
+[![Build status](https://ci.appveyor.com/api/projects/status/jhdt00h4xm893hus/branch/master?svg=true)](https://ci.appveyor.com/project/shelchkov/screen-cover/branch/master)
+
 ## How to use
 
 1. Wrap you app with ScreenCoverProvider;
