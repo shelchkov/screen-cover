@@ -1,7 +1,7 @@
-import React, { ReactElement, useRef, useState } from 'react'
-import { ScreenCover } from './screen-cover'
-import { ScreenCoverContext, ScreenCoverStage } from './screen-cover-context'
-import { CoverConfig, defaultConfig, noop } from './utils'
+import React, { ReactElement, useRef, useState } from "react"
+import { ScreenCover } from "./screen-cover"
+import { ScreenCoverContext, ScreenCoverStage } from "./screen-cover-context"
+import { CoverConfig, defaultConfig, noop } from "./utils"
 
 interface Props {
   children: ReactElement | ReactElement[]
@@ -12,7 +12,7 @@ export const ScreenCoverProvider = ({ children, config = {} }: Props) => {
   const [stage, setStage] = useState(ScreenCoverStage.INIT)
   const coverBgColor = useRef<string>()
 
-  const fullConfig = { ...defaultConfig, ...config,  }
+  const fullConfig = { ...defaultConfig, ...config }
 
   const showCover = (onCover: () => void = noop, onEnd: () => void = noop, config: Partial<CoverConfig> = {}) => {
     coverBgColor.current = config.backgroundColor
