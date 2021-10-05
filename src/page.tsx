@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useScreenCover } from './lib'
+import React, { useState } from "react"
+import { useScreenCover } from "./lib"
 
 export const Page = () => {
   const { showCover } = useScreenCover()

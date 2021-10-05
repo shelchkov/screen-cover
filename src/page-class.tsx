@@ -1,14 +1,20 @@
 import React, { Component } from "react"
-import { withScreenCover } from "./lib/components/with-screen-cover"
+import { withScreenCover, WithScreenCoverProps } from "./lib/components/with-screen-cover"
 
-class PageClass extends Component {
-  constructor(props) {
+type Props = WithScreenCoverProps
+
+interface State {
+  buttonText: string
+}
+
+class PageClass extends Component<Props, State> {
+  constructor (props: Props) {
     super(props)
 
     this.state = { buttonText: "Start" }
   }
 
-  handleClick() {
+  handleClick () {
     this.props.showCover(() => {
       this.setState({ buttonText: "Finished" })
     }, () => {
