@@ -1,7 +1,7 @@
-import React, { ReactElement, useState } from 'react'
-import { ScreenCover } from './screen-cover'
-import { ScreenCoverContext, ScreenCoverStage } from './screen-cover-context'
-import { CoverConfig, defaultConfig } from './utils'
+import React, { ReactElement, useRef, useState } from "react"
+import { ScreenCover } from "./screen-cover"
+import { ScreenCoverContext, ScreenCoverStage } from "./screen-cover-context"
+import { CoverConfig, defaultConfig, noop } from "./utils"
 
 interface Props {
   children: ReactElement | ReactElement[]
@@ -10,22 +10,25 @@ interface Props {
 
 export const ScreenCoverProvider = ({ children, config = {} }: Props) => {
   const [stage, setStage] = useState(ScreenCoverStage.INIT)
+  const coverBgColor = useRef<string>()
 
-  const fullConfig = { ...defaultConfig, ...config,  }
+  const fullConfig = { ...defaultConfig, ...config }
 
-  const showCover = (onCover?: () => void, onEnd?: () => void) => {
+  const showCover = (onCover: () => void = noop, onEnd: () => void = noop, config: Partial<CoverConfig> = {}) => {
+    coverBgColor.current = config.backgroundColor
     setStage(ScreenCoverStage.START)
     setTimeout(() => setStage(ScreenCoverStage.GO_UP))
 
     setTimeout(() => {
       setStage(ScreenCoverStage.UNCOVER)
-      onCover && onCover()
-    }, fullConfig.coverTime)
+      onCover()
+    }, config.coverTime || fullConfig.coverTime)
 
     setTimeout(() => {
       setStage(ScreenCoverStage.INIT)
-      onEnd && onEnd()
-    }, fullConfig.uncoverTime)
+      onEnd()
+      coverBgColor.current = undefined
+    }, config.uncoverTime || fullConfig.uncoverTime)
   }
 
   const shouldShowCover = stage !== ScreenCoverStage.INIT
@@ -37,7 +40,7 @@ export const ScreenCoverProvider = ({ children, config = {} }: Props) => {
       {children}
 
       {shouldShowCover &&
-        <ScreenCover stage={stage} {...fullConfig}  />
+        <ScreenCover stage={stage} {...fullConfig} backgroundColor={coverBgColor.current || fullConfig.backgroundColor} />
       }
     </ScreenCoverContext.Provider>
   )

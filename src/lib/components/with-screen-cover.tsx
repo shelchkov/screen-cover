@@ -7,6 +7,6 @@ export const withScreenCover = (Component: any) => {
 
     return <Component {...props} showCover={showCover} />
   }
-  
+
   return WrappedComponent
 }

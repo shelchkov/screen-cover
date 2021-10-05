@@ -4,7 +4,7 @@ import { Page } from './page';
 import PageClass from './page-class';
 
 const screenCoverConfig = {
-  coverTime: 500,
+  coverTime: 1500,
   uncoverTime: 4000,
   backgroundColor: "red"
 }
@@ -12,7 +12,7 @@ const screenCoverConfig = {
 const App = () => (
   <ScreenCoverProvider config={screenCoverConfig}>
     <Page />
-    <PageClass />
+    {process.env.NODE_ENV === "development" && <PageClass />}
   </ScreenCoverProvider>
 )
 

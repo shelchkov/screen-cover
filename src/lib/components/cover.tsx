@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import "../styles/cover.css"
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
   bottomTransition?: number
 }
 
-export const Cover = ({ top, bottom, backgroundColor, topTransition = .8, bottomTransition = .5 }: Props) => (
+export const Cover = ({ top, bottom, backgroundColor, topTransition = 0.8, bottomTransition = 0.5 }: Props) => (
   <div
     style={{
       top: `${top}px`,
