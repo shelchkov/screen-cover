@@ -40,7 +40,7 @@ for:
     build_script:
       - npm run package:build
     before_deploy:
-      - ps: '"//registry.npmjs.org/:_authToken=$env:NPM_AUTH_TOKEN`n" | out-file "$env:userprofile\.npmrc" -Encoding ASCII'
+      - echo "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}" > .npmrc
       - npm whoami
     deploy_script:
       - npm publish --access public
