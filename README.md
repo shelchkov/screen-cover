@@ -23,7 +23,15 @@ showCover receives onCover function (will be run once whole page is covered) and
 
 ### Class components
 
-Use HOC withScreenCover which will pass showCover to props.
+Use HOC withScreenCover which will pass showCover to props:
+
+```javascript
+type Props = WithScreenCoverProps & OtherProps
+
+class PageClass extends Component<Props> {...}
+
+export default withScreenCover(PageClass)
+```
 
 ## Customisations
 

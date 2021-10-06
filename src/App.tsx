@@ -1,7 +1,7 @@
-import React from 'react';
-import { ScreenCoverProvider } from './lib';
-import { Page } from './page';
-import PageClass from './page-class';
+import React from "react"
+import { ScreenCoverProvider } from "./lib"
+import { Page } from "./page"
+import PageClass from "./page-class"
 
 const screenCoverConfig = {
   coverTime: 1500,
@@ -16,4 +16,4 @@ const App = () => (
   </ScreenCoverProvider>
 )
 
-export default App;
+export default App
