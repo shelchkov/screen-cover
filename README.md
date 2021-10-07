@@ -2,6 +2,7 @@
 
 ![npm](https://img.shields.io/npm/v/screen-cover)
 [![Build status](https://ci.appveyor.com/api/projects/status/jhdt00h4xm893hus/branch/master?svg=true)](https://ci.appveyor.com/project/shelchkov/screen-cover/branch/master)
+[![CodeFactor](https://www.codefactor.io/repository/github/shelchkov/screen-cover/badge)](https://www.codefactor.io/repository/github/shelchkov/screen-cover)
 
 ## How to use
 
