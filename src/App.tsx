@@ -1,19 +1,18 @@
 import React from "react"
-import { ScreenCoverProvider } from "./lib"
+import { DocsLink } from "./docs-link"
 import { Page } from "./page"
 import PageClass from "./page-class"
 
-const screenCoverConfig = {
-  coverTime: 1500,
-  uncoverTime: 4000,
-  backgroundColor: "red"
-}
-
 const App = () => (
-  <ScreenCoverProvider config={screenCoverConfig}>
-    <Page />
-    {process.env.NODE_ENV === "development" && <PageClass />}
-  </ScreenCoverProvider>
+  <div className="main">
+    <div>
+      <p className="title">Screen cover</p>
+      <DocsLink />
+
+      <Page />
+      <PageClass />
+    </div>
+  </div>
 )
 
 export default App

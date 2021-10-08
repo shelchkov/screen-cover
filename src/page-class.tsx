@@ -19,7 +19,7 @@ class PageClass extends Component<Props, State> {
       this.setState({ buttonText: "Finished" })
     }, () => {
       console.log("End")
-    })
+    }, { coverTime: 900, uncoverTime: 2500 })
   }
 
   render () {
@@ -27,7 +27,7 @@ class PageClass extends Component<Props, State> {
     const handleClick = this.handleClick.bind(this)
 
     return <div>
-      <p>Class component example</p>
+      <p className="section-title">Fast cover example</p>
 
       <button onClick={handleClick}>{buttonText}</button>
     </div>
