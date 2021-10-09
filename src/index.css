@@ -13,6 +13,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+  white-space: pre;
+  font-size: 14px;
 }
 
 button {
@@ -51,6 +53,22 @@ button {
   margin-top: 6px;
 }
 
+.section {
+  min-width: 946px;
+}
+
 .section-title {
   margin-bottom: 10px;
+}
+
+.code-container {
+  padding: 8px;
+  margin-top: 6px;
+  background-color: white;
+  border: 1px solid #C2B8AD;
+  border-radius: 6px;
+}
+
+.show-code {
+  margin-top: 16px;
 }
