@@ -49,7 +49,7 @@ for:
         - job_name: Deploy Demo
     skip_non_tags: true
     build_script:
-      - npm run build
+      - REACT_APP_TAG_NAME=${APPVEYOR_REPO_TAG_NAME} npm run build
     before_deploy:
       - curl https://cli-assets.heroku.com/install.sh | sh
       - heroku -v
