@@ -15,6 +15,10 @@ export const ScreenCoverProvider = ({ children, config = {} }: Props) => {
   const fullConfig = { ...defaultConfig, ...config }
 
   const showCover = (onCover: () => void = noop, onEnd: () => void = noop, config: Partial<CoverConfig> = {}) => {
+    if (stage !== ScreenCoverStage.INIT) {
+      return
+    }
+
     coverBgColor.current = config.backgroundColor
     setStage(ScreenCoverStage.START)
     setTimeout(() => setStage(ScreenCoverStage.GO_UP))
