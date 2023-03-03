@@ -5,7 +5,7 @@ environment:
   GIT_NAME: Yaroslav Shelchkov
   HEROKU_APP_NAME: screen-cover
   HEROKU_API_KEY:
-    secure: jPWq020PLzj6m4aJkjSCJcXuwD/CYjSLNs1tPNPBRP8Hs5YvF0cGJCZR+X/BiSJL
+    secure: R/5IvI/HPYe7XOScz/pQZ0tM2YMv3izoJu0P9gf7nUOjyAeYq4yHTLLfyyf2GflR
 
   matrix:
     - job_name: Checks
