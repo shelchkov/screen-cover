@@ -3,10 +3,7 @@ environment:
     secure: K8AN+8bCWLe2w8YzZE0HvENwQO0JPoY4fUZQGmH4U6x6WIP/Z1UAIof4OeNXBc8T
   GIT_EMAIL: shelchkovy@yandex.ru
   GIT_NAME: Yaroslav Shelchkov
-  HEROKU_APP_NAME: screen-cover
-  HEROKU_API_KEY:
-    secure: R/5IvI/HPYe7XOScz/pQZ0tM2YMv3izoJu0P9gf7nUOjyAeYq4yHTLLfyyf2GflR
-
+  
   matrix:
     - job_name: Checks
     - job_name: Deploy
@@ -49,15 +46,10 @@ for:
         - job_name: Deploy Demo
     skip_non_tags: true
     build_script:
-      - REACT_APP_TAG_NAME=${APPVEYOR_REPO_TAG_NAME} npm run build
+      - git log
     before_deploy:
-      - curl https://cli-assets.heroku.com/install.sh | sh
-      - heroku -v
+      - git status
     deploy_script:
       - git config user.email "${GIT_EMAIL}" && git config user.name "${GIT_NAME}"
-      - echo "{ \"root\":\"build/\", \"clean_urls\":true }" > static.json
-      - rm .gitignore
-      - git add static.json build && git commit -m'deploy ${APPVEYOR_REPO_TAG_NAME}'
-      # - heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git --app ${HEROKU_APP_NAME}
-      - heroku stack:set heroku-20 --app ${HEROKU_APP_NAME}
-      - git push -f https://heroku:${HEROKU_API_KEY}@git.heroku.com/${HEROKU_APP_NAME}.git HEAD:refs/heads/main
+      - git add -A && git commit -m'deploy ${APPVEYOR_REPO_TAG_NAME}'
+      - git push -f git@github.com:shelchkov/screen-cover.git HEAD:refs/heads/production
