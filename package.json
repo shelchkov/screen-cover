@@ -24,7 +24,7 @@
   "scripts": {
     "start": "react-scripts start",
     "lint:fix": "npm run lint -- --fix",
-    "build": "react-scripts build",
+    "build": "REACT_APP_TAG_NAME=$npm_package_version react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "package:build": "npm run copy-css && npm run compile:ts",
