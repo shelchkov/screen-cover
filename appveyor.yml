@@ -45,11 +45,6 @@ for:
       only:
         - job_name: Deploy Demo
     skip_non_tags: true
-    build_script:
-      - git log
-    before_deploy:
-      - git status
     deploy_script:
       - git config user.email "${GIT_EMAIL}" && git config user.name "${GIT_NAME}"
-      - git add -A && git commit -m'deploy ${APPVEYOR_REPO_TAG_NAME}'
       - git push -f git@github.com:shelchkov/screen-cover.git HEAD:refs/heads/production
