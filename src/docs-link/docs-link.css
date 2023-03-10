@@ -1,0 +1,9 @@
+.docs-link {
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.docs-link__link {
+  font-size: 13px;
+  color: #506AD4;
+}

@@ -1,0 +1,12 @@
+.app {
+  padding: 48px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app__title {
+  margin-bottom: 0;
+  font-size: 22px;
+  text-align: center;
+}
