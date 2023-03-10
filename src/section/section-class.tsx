@@ -1,6 +1,7 @@
 import React, { Component } from "react"
-import { withScreenCover, WithScreenCoverProps } from "./lib/components/with-screen-cover"
-import { ShowCode } from "./show-code"
+import { withScreenCover, WithScreenCoverProps } from "../lib/components/with-screen-cover"
+import { ShowCode } from "../show-code/show-code"
+import "./section.css"
 
 type Props = WithScreenCoverProps
 
@@ -34,7 +35,7 @@ class PageClass extends Component<Props, State> {
     const handleClick = this.handleClick.bind(this)
 
     return <div className="section">
-      <p className="section-title">Fast cover example</p>
+      <p className="section__title">Fast cover example</p>
 
       <button onClick={handleClick}>{buttonText}</button>
     </div>
@@ -43,7 +44,7 @@ class PageClass extends Component<Props, State> {
 
 export default withScreenCover(PageClass)`
 
-class PageClass extends Component<Props, State> {
+class SectionClass extends Component<Props, State> {
   constructor (props: Props) {
     super(props)
 
@@ -63,7 +64,7 @@ class PageClass extends Component<Props, State> {
     const handleClick = this.handleClick.bind(this)
 
     return <div className="section">
-      <p className="section-title">Fast cover example</p>
+      <p className="section__title">Fast cover example</p>
 
       <button onClick={handleClick}>{buttonText}</button>
       <ShowCode code={code} />
@@ -71,4 +72,4 @@ class PageClass extends Component<Props, State> {
   }
 }
 
-export default withScreenCover(PageClass)
+export default withScreenCover(SectionClass)

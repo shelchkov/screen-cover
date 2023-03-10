@@ -1,6 +1,7 @@
 import React, { useState } from "react"
-import { useScreenCover } from "./lib"
-import { ShowCode } from "./show-code"
+import { useScreenCover } from "../lib"
+import { ShowCode } from "../show-code/show-code"
+import "./section.css"
 
 const code = `const Page = () => {
   const { showCover } = useScreenCover()
@@ -14,12 +15,12 @@ const code = `const Page = () => {
       <button onClick={handleClick}>Show cover</button>
       <button onClick={showBlueCover}>Show blue cover</button>
 
-      <p className="description">{content}</p>
+      <p className="section__description">{content}</p>
     </div>
   )
 }`
 
-export const Page = () => {
+export const Section = () => {
   const { showCover } = useScreenCover()
   const [content, setContent] = useState("Page 1")
 
@@ -31,7 +32,7 @@ export const Page = () => {
       <button onClick={handleClick}>Show cover</button>
       <button onClick={showBlueCover}>Show blue cover</button>
 
-      <p className="description">{content}</p>
+      <p className="section__description">{content}</p>
 
       <ShowCode code={code} />
     </div>

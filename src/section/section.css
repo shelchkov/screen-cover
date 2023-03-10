@@ -1,0 +1,11 @@
+.section {
+  min-width: 946px;
+}
+
+.section__description {
+  margin-top: 6px;
+}
+
+.section__title {
+  margin-bottom: 10px;
+}
